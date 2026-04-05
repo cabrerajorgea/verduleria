@@ -2,16 +2,20 @@
 const WHATSAPP_NUMBER = "5491122334455"; // Placeholder number
 
 const PRODUCTS = [
-    { id: 1, name: "Tomate Perita", price: 1200, unit: "kg", image: "assets/tomate.png" },
-    { id: 2, name: "Banana Ecuador", price: 1500, unit: "kg", image: "assets/banana.png" },
-    { id: 3, name: "Papa Blanca", price: 800, unit: "kg", image: "assets/papa.png" },
-    { id: 4, name: "Manzana Roja", price: 1300, unit: "kg", image: "assets/manzana_roja.png" },
-    { id: 5, name: "Lechuga Capuchina", price: 1000, unit: "unidad", image: "assets/imagen1.png" },
-    { id: 6, name: "Zanahoria", price: 900, unit: "kg", image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&q=80&w=400" },
-    { id: 7, name: "Naranja Jugo", price: 1100, unit: "kg", image: "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?auto=format&fit=crop&q=80&w=400" },
-    { id: 8, name: "Palta Hass", price: 2500, unit: "unidad", image: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&q=80&w=400" },
-    { id: 9, name: "Cebolla Morada", price: 1100, unit: "kg", image: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&q=80&w=400" },
-    { id: 10, name: "Uva Red Globe", price: 1800, unit: "kg", image: "assets/uvas.png" },
+    { id: 1, name: "Tomate Perita", price: 1200, unit: "kg", category: "Verdulería", image: "assets/tomate.png" },
+    { id: 2, name: "Banana Ecuador", price: 1500, unit: "kg", category: "Verdulería", image: "assets/banana.png" },
+    { id: 3, name: "Papa Blanca", price: 800, unit: "kg", category: "Verdulería", image: "assets/papa.png" },
+    { id: 4, name: "Manzana Roja", price: 1300, unit: "kg", category: "Verdulería", image: "assets/manzana_roja.png" },
+    { id: 5, name: "Lechuga Capuchina", price: 1000, unit: "unidad", category: "Verdulería", image: "assets/imagen1.png" },
+    { id: 6, name: "Zanahoria", price: 900, unit: "kg", category: "Verdulería", image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&q=80&w=400" },
+    { id: 7, name: "Naranja Jugo", price: 1100, unit: "kg", category: "Verdulería", image: "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?auto=format&fit=crop&q=80&w=400" },
+    { id: 8, name: "Palta Hass", price: 2500, unit: "unidad", category: "Verdulería", image: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&q=80&w=400" },
+    { id: 9, name: "Cebolla Morada", price: 1100, unit: "kg", category: "Verdulería", image: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&q=80&w=400" },
+    { id: 10, name: "Uva Red Globe", price: 1800, unit: "kg", category: "Verdulería", image: "assets/uvas.png" },
+    { id: 11, name: "Coca Cola 2.25L", price: 2500, unit: "unidad", category: "Bebidas", image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&q=80&w=400" },
+    { id: 12, name: "Sprite 2.25L", price: 2500, unit: "unidad", category: "Bebidas", image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&q=80&w=400" },
+    { id: 13, name: "Agua Saborizada Levite Pomelo 1.5L", price: 1500, unit: "unidad", category: "Bebidas", image: "https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&q=80&w=400" },
+    { id: 14, name: "Agua Saborizada Levite Manzana 1.5L", price: 1500, unit: "unidad", category: "Bebidas", image: "https://images.unsplash.com/photo-1600742518428-a3597fe21685?auto=format&fit=crop&q=80&w=400" },
 ];
 
 // --- STATE MANAGEMENT ---
@@ -38,19 +42,33 @@ const whatsappBtn = document.getElementById('whatsappBtn');
 function renderProducts(filter = "") {
     const filtered = PRODUCTS.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()));
     
-    productGrid.innerHTML = filtered.map(product => `
-        <div class="product-card fade-in">
-            <img src="${product.image}" alt="${product.name}" class="product-image">
-            <div class="product-info">
-                <span class="product-name">${product.name}</span>
-                <span class="product-unit">x ${product.unit}</span>
-                <span class="product-price">$${product.price}</span>
-                <button class="add-btn" onclick="addToCart(${product.id})">
-                    Agregar (+1)
-                </button>
+    // Group products by category
+    const categories = {};
+    filtered.forEach(p => {
+        const cat = p.category || 'Otros';
+        if (!categories[cat]) categories[cat] = [];
+        categories[cat].push(p);
+    });
+
+    let html = '';
+    for (const cat in categories) {
+        html += `<h2 class="category-title">${cat}</h2>`;
+        html += categories[cat].map(product => `
+            <div class="product-card fade-in">
+                <img src="${product.image}" alt="${product.name}" class="product-image">
+                <div class="product-info">
+                    <span class="product-name">${product.name}</span>
+                    <span class="product-unit">x ${product.unit}</span>
+                    <span class="product-price">$${product.price}</span>
+                    <button class="add-btn" onclick="addToCart(${product.id})">
+                        Agregar (+1)
+                    </button>
+                </div>
             </div>
-        </div>
-    `).join('');
+        `).join('');
+    }
+    
+    productGrid.innerHTML = html;
 }
 
 /**

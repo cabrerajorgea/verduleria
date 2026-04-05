@@ -108,6 +108,15 @@ header {
     }
 }
 
+.category-title {
+    grid-column: 1 / -1;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
 /* Product Card */
 .product-card {
     background: var(--surface);
