@@ -16,6 +16,11 @@ const PRODUCTS = [
     { id: 12, name: "Sprite 2.25L", price: 2500, unit: "unidad", category: "Bebidas", image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&q=80&w=400" },
     { id: 13, name: "Agua Saborizada Levite Pomelo 1.5L", price: 1500, unit: "unidad", category: "Bebidas", image: "https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&q=80&w=400" },
     { id: 14, name: "Agua Saborizada Levite Manzana 1.5L", price: 1500, unit: "unidad", category: "Bebidas", image: "https://images.unsplash.com/photo-1600742518428-a3597fe21685?auto=format&fit=crop&q=80&w=400" },
+    { id: 15, name: "Arroz Blanco 1kg", price: 1500, unit: "unidad", category: "Despensa", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=400" },
+    { id: 16, name: "Fideos Spaghetti 500g", price: 1200, unit: "unidad", category: "Despensa", image: "https://images.unsplash.com/photo-1621996316565-e31522c9dc5c?auto=format&fit=crop&q=80&w=400" },
+    { id: 17, name: "Aceite de Girasol 1.5L", price: 3500, unit: "unidad", category: "Despensa", image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&q=80&w=400" },
+    { id: 18, name: "Azúcar Común 1kg", price: 900, unit: "unidad", category: "Despensa", image: "https://images.unsplash.com/photo-1581428982868-e410dd147b9d?auto=format&fit=crop&q=80&w=400" },
+    { id: 19, name: "Yerba Mate 500g", price: 2800, unit: "unidad", category: "Despensa", image: "https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?auto=format&fit=crop&q=80&w=400" },
 ];
 
 // --- STATE MANAGEMENT ---
