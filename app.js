@@ -11,7 +11,7 @@ const PRODUCTS = [
     { id: 7, name: "Naranja Jugo", price: 1100, unit: "kg", image: "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?auto=format&fit=crop&q=80&w=400" },
     { id: 8, name: "Palta Hass", price: 2500, unit: "unidad", image: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&q=80&w=400" },
     { id: 9, name: "Cebolla Morada", price: 1100, unit: "kg", image: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&q=80&w=400" },
-    { id: 10, name: "Uva Red Globe", price: 1800, unit: "kg", image: "https://images.unsplash.com/photo-1601275868399-45bc4de0059b?auto=format&fit=crop&q=80&w=400" },
+    { id: 10, name: "Uva Red Globe", price: 1800, unit: "kg", image: "assets/uvas.png" },
 ];
 
 // --- STATE MANAGEMENT ---
@@ -27,6 +27,7 @@ const closeModal = document.getElementById('closeModal');
 const cartItemsList = document.getElementById('cartItemsList');
 const userNameInput = document.getElementById('userName');
 const userAddressInput = document.getElementById('userAddress');
+const userReferenceInput = document.getElementById('userReference');
 const whatsappBtn = document.getElementById('whatsappBtn');
 
 // --- FUNCTIONS ---
@@ -128,6 +129,7 @@ function renderCartItems() {
 function sendOrder() {
     const name = userNameInput.value.trim();
     const address = userAddressInput.value.trim();
+    const reference = userReferenceInput.value.trim();
     
     if (!name) {
         alert("Por favor, ingresa tu nombre para continuar.");
@@ -150,6 +152,9 @@ function sendOrder() {
     message += `\n*Total: $${subtotal}*\n\n`;
     message += `*Cliente:* ${name}\n`;
     message += `*Dirección:* ${address}`;
+    if (reference) {
+        message += `\n*Referencias:* ${reference}`;
+    }
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
