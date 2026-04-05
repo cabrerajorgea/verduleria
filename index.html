@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don Roberto | Verdulería de Barrio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <i data-lucide="leaf" style="color: var(--primary);"></i>
+            <h1>Don Roberto</h1>
+        </div>
+        <div class="search-container">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="searchInput" placeholder="Buscar frutas o verduras...">
+        </div>
+    </header>
+
+    <main class="catalog-section">
+        <div id="productGrid" class="product-grid">
+            <!-- Products will be rendered here by JS -->
+        </div>
+    </main>
+
+    <!-- Bottom Navigation (Cart Summary) -->
+    <nav class="bottom-nav">
+        <div class="cart-summary">
+            <span class="total-label">Subtotal</span>
+            <span id="totalAmount" class="total-amount">$0</span>
+        </div>
+        <button id="viewCartBtn" class="checkout-btn" disabled>
+            Ver Pedido
+        </button>
+    </nav>
+
+    <!-- Cart Modal Overlay -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Tu Pedido</h2>
+                <button id="closeModal" class="close-modal">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+
+            <div id="cartItemsList" class="cart-items-list">
+                <!-- Cart items will be rendered here -->
+            </div>
+
+            <div class="checkout-form">
+                <div class="input-group">
+                    <label for="userName">Tu Nombre</label>
+                    <input type="text" id="userName" placeholder="Ingresa tu nombre completo">
+                </div>
+                
+                <div class="input-group">
+                    <label for="userAddress">Dirección de Entrega</label>
+                    <input type="text" id="userAddress" placeholder="Cale, Altura, Barrio...">
+                </div>
+                
+                <button id="whatsappBtn" class="checkout-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <i data-lucide="message-circle"></i>
+                    Enviar por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=2"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
