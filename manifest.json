@@ -1,0 +1,16 @@
+{
+  "name": "Don Roberto | Verdulería de Barrio",
+  "short_name": "Don Roberto",
+  "description": "Tu verdulería de barrio de confianza",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F8F9FA",
+  "theme_color": "#27AE60",
+  "icons": [
+    {
+      "src": "icono.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png"
+    }
+  ]
+}

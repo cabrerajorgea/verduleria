@@ -208,3 +208,16 @@ modalOverlay.addEventListener('click', (e) => {
 renderProducts();
 updateCart();
 console.log("SPA initialized successfully.");
+
+// PWA Service Worker Registration
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .then(registration => {
+                console.log('SW registrado exitosamente con scope:', registration.scope);
+            })
+            .catch(error => {
+                console.log('Fallo en registro de SW:', error);
+            });
+    });
+}
